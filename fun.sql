@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2017 at 03:16 PM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Jul 29, 2017 at 04:33 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `user` (
   `userid` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `contactno` varchar(100) NOT NULL,
+  `contactno` bigint(100) NOT NULL,
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,8 +38,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `name`, `contactno`, `address`) VALUES
-(39, 'Roshan Jha', '8149362415', 'Pune'),
-(40, 'Ravi Kishan', '987654321', 'Bihar');
+(1, 'Roshan Jha', 8149362415, 'Pune'),
+(2, 'Manoj Chemate', 9623646802, 'Nagar'),
+(3, 'Shubham Kamble', 9405343166, 'Nagar'),
+(4, 'Parikshit Gune', 9876543210, 'Sangamner'),
+(5, 'Swapnil Patil', 9876543210, 'Jalgaon');
 
 --
 -- Indexes for dumped tables
@@ -61,8 +62,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;COMMIT;
-
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
