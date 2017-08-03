@@ -1,13 +1,13 @@
 
 <?php
+session_start();
 error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING ^ E_DEPRECATED);
 $con = mysqli_connect("localhost", "root", "", "fun");
 
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
-?>
+if(isset($_SESSION['user'])) {?>
 
 <!DOCTYPE html>
 <html>
@@ -31,11 +31,15 @@ if (!$con) {
 
 		    		
     		<div class="col-md-12" style="margin-top:5%;">
+    		<form method="POST">
+    		<div class="text-primary" style="margin-right:2%; font-size: 150%; text-align: right;">Welcome <?php echo $_SESSION['user']; ?>&nbsp;
+    		<button type="submit" name='logout' class="btn btn-danger">LogOut</button></div>
+    		
     		<div class="text-primary  h1" style="margin-bottom:2%; text-align: center;">Records</div>
 
     			
     			<table class='table'>
-    			<form method="POST">
+    			
 				<tr>
 				<th>ID</th>
 				<th>Name</th>
@@ -169,6 +173,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     }
     
 	}
+
+	else if (isset($_POST['logout'])) {
+		//session_start();
+		session_destroy();
+		echo '<script>window.location.href = "login.php";</script>';		
+	}
     
 }
 
@@ -226,4 +236,12 @@ if($_SERVER['REQUEST_METHOD']=="GET"){
 
 }
 mysqli_close($con);
+}
+
+else{
+
+   
+	echo '<script>window.alert("Login First");</script>';
+	echo '<script>window.location.href = "login.php";</script>';
+}
 ?>
